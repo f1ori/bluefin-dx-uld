@@ -9,6 +9,11 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
+
+# use negativo17 for 3rd party packages with higher priority than default
+curl -Lo /etc/yum.repos.d/negativo17-fedora-uld.repo https://negativo17.org/repos/fedora-uld.repo
+sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-uld.repo
+
 # this installs a package from fedora repos
 dnf5 install -y uld 
 
