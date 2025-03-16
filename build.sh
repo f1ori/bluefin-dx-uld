@@ -10,14 +10,8 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 
-# use negativo17 for 3rd party packages with higher priority than default
-curl -Lo /etc/yum.repos.d/negativo17-fedora-uld.repo https://negativo17.org/repos/fedora-uld.repo
-sed -i '0,/enabled=1/{s/enabled=1/enabled=1\npriority=90/}' /etc/yum.repos.d/negativo17-fedora-uld.repo
-
-ls -l /opt
-
-# this installs a package from fedora repos
-dnf5 install -y uld 
+# install samsung and hp printer and scanner driver
+dnf5 install -y /tmp/uld-1.00.39.12-3.fc41.x86_64.rpm
 
 # Use a COPR Example:
 #
@@ -28,4 +22,4 @@ dnf5 install -y uld
 
 #### Example for enabling a System Unit File
 
-systemctl enable podman.socket
+# systemctl enable podman.socket

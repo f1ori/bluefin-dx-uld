@@ -14,6 +14,7 @@ FROM ghcr.io/ublue-os/bluefin-dx:stable
 ## the following RUN directive does all the things required to run "build.sh" as recommended.
 
 COPY build.sh /tmp/build.sh
+COPY uld-1.00.39.12-3.fc41.x86_64.rpm /tmp
 
 RUN mkdir -p /var/lib/alternatives && \
     /tmp/build.sh && \
